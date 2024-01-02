@@ -1,0 +1,22 @@
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: #ededed;
+}
+
+ul,
+li {
+    list-style: none;
+}
+
+.outer-div {
+    width: 100%;
+}
+
+.container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
