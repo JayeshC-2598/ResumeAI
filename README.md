@@ -1,8 +1,12 @@
-# React + Vite
+# Resume AI Front-end
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+its an AI based `Resume builder dashboard` build in react.
 
-Currently, two official plugins are available:
+## Guidelines
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Never work on main branch
+2. Always make atomic push's. i.e. i. one push request must contains minimum
+   file changes. [3 or less file changes per push]
+3. create branch fir each issue. i.e. i. create branch for file upload. ii.
+   create component make changes in that branch. iii. push it into on github.
+   iV. make a pull request there.
