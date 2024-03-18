@@ -4,9 +4,19 @@
 @tailwind components;
 @tailwind utilities;
 
-/* *,
-body {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-} */
+.custom-shadow-md {
+	/* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+@media print {
+	/* Set margins for each page */
+	@page {
+		margin: 1cm; /* Adjust the margin values as per your requirement */
+	}
+
+	/* Additional styles for printing if needed */
+	body {
+		font-size: 12pt;
+	}
+}
