@@ -6,28 +6,16 @@ import { useOpenAIContext } from "../context/OpenAIContext";
 import { useDocumentsContext } from "../context/DocumentsContext";
 import Preview from "../components/result/Preview";
 
-// import * as PDF from "pdfmake";
-// import pdfMake from "pdfmake/build/pdfmake";
-// import pdfFonts from "pdfmake/build/vfs_fonts";
-// pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
-// import htmlToPdfmake from "html-to-pdfmake"
-
-// import pdf from 'html-pdf';
-// import { saveAs } from 'file-saver';
-
-import html2pdf from 'html2pdf.js';
-// import jsPDF from 'jspdf';
-
-
-
-
+import { jsPDF } from "jspdf";
 
 
 
 function Result() {
-  const { GetOpenAIResponse } = useOpenAIContext();
+  // const { GetOpenAIResponse } = useOpenAIContext();
   const { GetDocumentById } = useDocumentsContext();
+
+
   const [resume, setDocument] = useState({
     name: "",
     resume_content: "",
@@ -40,7 +28,7 @@ function Result() {
 
   const { did } = useParams();
   const pdfRef = useRef(null);
-  const buttonRef = useRef(null);    
+  const buttonRef = useRef(null);
 
   const navigate = useNavigate();
 
@@ -51,63 +39,44 @@ function Result() {
     }
     // console.log("PDF", PDF);
     GetDocumentById(did)
-    .then((_document) => {
-      if (!_document) {
-        toast.error("document does not exist, please verify.");
-        return;
-      }
-      console.log(_document);
-      setDocument(_document);
-    });
-
-    console.log(pdfRef.current);
-    if(buttonRef.current){
-      buttonRef.current.addEventListener("click",HandleClick);
-    }
-    // return ()=> buttonRef.current.removeEventListener("click",HandleClick);
+      .then((_document) => {
+        if (!_document) {
+          toast.error("document does not exist, please verify.");
+          return;
+        }
+        console.log(_document);
+        setDocument(_document);
+      });
   }, []);
-  const HandleClick = e =>{
-    // console.log(document);
-    // if(!pdfRef.current)
-    // return;
-    // var printContents = pdfRef.current.innerHTML;
-    // var originalContents = document.body.innerHTML;
-    // document.body.innerHTML = printContents;
-    // window.print();
-    // document.body.innerHTML = originalContents;
+  
+  const HandleClick = e => {
+    const doc = new jsPDF({unit:"pt"});
+    doc.html(pdfRef.current,{
+      callback:(doc) => {
+        doc.save();
+      },
+      margin:[60, 60, 60, 60],
+      autoPaging:"text"
+    })
 
-
-
-    // doc.ht/\ml(pdfRef.current.innerHTML)
-
-
-
-    const opt = {
-      margin:       1,
-      filename:     'converted.pdf',
-      image:        { type: 'jpeg', quality: 0.2 },
-      html2canvas:  { scale: 2 },
-      jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
-    html2pdf().from(pdfRef.current.innerHTML).set(opt).save();
-}
+  }
 
   const HandleSubmit = (e) => {
     e.preventDefault();
   };
 
-  // useEffect(()=>{
-  //     GetOpenAIResponse("Hi there, what format the resume will be ?".replace(" ","_")).then((resp)=>{
-  //         console.log("resp=>",resp);
-  //     })
-  // },[])
 
   return (
     <div className="max-w-7xl mx-auto">
       <div className="flex flex-col">
         <Preview markdown={resume.response} pdfRef={pdfRef} />
       </div>
-      <div className="mt-8 containe mx-auto px-5 w-full bottom-0 ">
+      <button className="fixed bottom-12 right-12 bg-blue-400 rounded-full w-14 h-14 active:bg-blue-500 active:scale-95 transition-all grid place-content-center" onClick={HandleClick}>
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="w-6 h-6 text-white">
+          <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+        </svg>
+      </button>
+      <div className="mt-8 containe mx-auto px-5 w-full bottom-0 hidden">
         <form
           className="bg-white p-2 shadow-xl rounded-t-xl"
           onSubmit={HandleSubmit}
@@ -131,6 +100,7 @@ function Result() {
           </div>
         </form>
       </div>
+
     </div>
   );
 }

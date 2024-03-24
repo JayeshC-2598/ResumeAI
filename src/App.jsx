@@ -11,6 +11,7 @@ import ForgotPassword from "./pages/auth/ForgotPassword";
 import Result from "./pages/Result";
 import { Toaster } from 'react-hot-toast';
 import Editor from "./pages/Editor";
+import PDFRenderer from "./pages/PDFRenderer";
 // import { useDocumentsContext } from "./context/DocumentsContext";
 
 // import { routes } from "./routes";
@@ -20,13 +21,6 @@ import Editor from "./pages/Editor";
 
 function App() {
     const { user, loading } = useAuthContext();
-    // const { initDocuments } = useDocumentsContext();
-    // const { payed } = useMarkdownContext();
-
-    // useEffect(() => {
-    //     console.log(user);
-    //     initDocuments(user.uid);
-    // }, [])
     return (
         <div className="w-full min-h-svh -font-inter bg-blue-50">
             {
@@ -45,6 +39,7 @@ function App() {
                         <Route path="login" element={user ? <Navigate to="/" /> : <Login />} />
                         <Route path="register" element={user ? <Navigate to="/" /> : <Register />} />
                         <Route path="forgot-pass" element={user ? <Navigate to="/" /> : <ForgotPassword />} />
+                        <Route path="output/:did" element={user ? <PDFRenderer /> : <Navigate to="/" /> } />
                     </Routes>
             }
             <Toaster />
