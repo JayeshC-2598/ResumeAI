@@ -12,6 +12,7 @@ import Result from "./pages/Result";
 import { Toaster } from 'react-hot-toast';
 import Editor from "./pages/Editor";
 import PDFRenderer from "./pages/PDFRenderer";
+import Invoice from "./pages/Invoice";
 // import { useDocumentsContext } from "./context/DocumentsContext";
 
 // import { routes } from "./routes";
@@ -32,6 +33,7 @@ function App() {
                         <Route path="/" element={user ? <MainLayout /> : <Navigate to="/login" />} >
                             <Route index element={<Home />} />
                             <Route path="profile" element={<ProfilePage />} />
+                            <Route path="invoice" element={<Invoice />} />
                             <Route path="resume" element={<Resume />} />
                             <Route path="result/:did" element={<Result />} />
                             {/* <Route path="editor" element={<Editor />} /> */}

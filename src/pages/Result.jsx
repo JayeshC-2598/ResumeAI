@@ -50,14 +50,17 @@ function Result() {
   }, []);
   
   const HandleClick = e => {
-    const doc = new jsPDF({unit:"pt"});
+    const doc = new jsPDF("p", "pt", "a4");
+    pdfRef.current.style.width = "600px";
     doc.html(pdfRef.current,{
+      margin:[100, 30, 30, 30],
       callback:(doc) => {
         doc.save();
+        pdfRef.current.style = "";
       },
-      margin:[60, 60, 60, 60],
       autoPaging:"text"
     })
+
 
   }
 
