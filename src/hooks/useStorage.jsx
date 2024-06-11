@@ -9,7 +9,10 @@ function useStorage() {
     const getItem = (key) => {
         return JSON.parse(localStorage.getItem(key));
     }
-    return { setItem, getItem, error }
+    const removeItem = (key) => {
+        localStorage.removeItem(key);
+    }
+    return { setItem, getItem, removeItem, error }
 }
 
 export default useStorage

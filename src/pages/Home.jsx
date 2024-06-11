@@ -5,14 +5,15 @@ import { useDocumentsContext } from "../context/DocumentsContext";
 import { useAuthContext } from "../context/AuthContext";
 
 function Home() {
-    const { user, loading } = useAuthContext();
-    // const { deleteTemp } = useDocumentsContext();
-    const { initDocuments, AddNewDocument } = useDocumentsContext();
+    const { token } = useAuthContext();
+    const { InitDocuments } = useDocumentsContext();
 
     useEffect(() => {
-        console.log(user);
-        initDocuments(user.uid);
-    }, [])
+        if (token)
+            InitDocuments();
+    }, [token])
+
+
     return (
         <>
             <HeroSection />

@@ -7,7 +7,7 @@ const Preview = ({ markdown, pdfRef }) => {
   const [show,setShow] = useState(false);
   return (
     <div className="flex-1 p-5 w-full overflow-x-auto -max-h-[calc(100vh_-_4rem)] md:max-h-none">
-      <div className="-min-w-[600px] w-full -p-8 element-to-print" ref={pdfRef}>
+      <div className="max-w-[530px] mx-auto w-full -p-8 element-to-print" ref={pdfRef}>
         <Markdown
           remarkPlugins={[remarkGfm]}
           className={

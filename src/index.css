@@ -1,22 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Noto+Color+Emoji&display=swap");
+@import 'sweetalert2/dist/sweetalert2.css';
+
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 .custom-shadow-md {
-	/* box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px; */
 	box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
-
-@media print {
-	/* Set margins for each page */
-	@page {
-		margin: 1cm; /* Adjust the margin values as per your requirement */
-	}
-
-	/* Additional styles for printing if needed */
-	body {
-		font-size: 12pt;
-	}
+::-webkit-scrollbar-thumb {
+	background-color: #DFDFDF;
+	border-radius: 5px;
+}
+::-webkit-scrollbar {
+	width: 8px;
+	height: 8px;
+  }
+.mermaid > svg{
+	display: block;
+	max-height: 100%;
 }

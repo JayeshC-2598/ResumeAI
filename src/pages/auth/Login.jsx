@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import useStorage from "../../hooks/useStorage";
 import { useAuthContext } from "../../context/AuthContext";
-import { signInWithEmailAndPassword, signOut } from "firebase/auth";
+// import { signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../config/firebase-config";
 import toast from "react-hot-toast";
 
 function Login() {
     const { setItem } = useStorage();
     const [loading, setLoading] = useState(false);
-    const { dispatch } = useAuthContext();
+    const { dispatch, Login } = useAuthContext();
     const [formdata, setFormdata] = useState({
-        email: "",
+        username: "",
         password: "",
     });
     const navigate = useNavigate();
@@ -23,37 +23,49 @@ function Login() {
     const HandleSubmit = (e) => {
         e.preventDefault();
         setLoading(true);
-        signInWithEmailAndPassword(
-            auth,
-            formdata.email,
-            formdata.password
-        )
-            .then((response) => {
-                if (!response.user.emailVerified) {
-                    signOut(auth);
-                    toast.error(
-                        "Please check your email for account verification."
-                    );
-                    dispatch({ type: "RESET" });
-                } else {
-                    setItem("user", response.user);
-                    dispatch({
-                        type: "SET",
-                        payload: response.user,
-                    });
-                    navigate("/");
-                    toast.success("Login successfull..");
-                }
-            })
-            .catch((error) => {
-                const errorMessage = error.message;
-                toast.error(errorMessage);
-            })
-            .finally(() => {
-                setLoading(false);
-            });
+        console.log(formdata);
+        Login(formdata)
+        .then((resp) => {
+            console.log(resp);
+            navigate("/");
+            toast.success(resp.data.message);
+        })
+        .catch((error) => {
+            console.error(error)
+            toast.error("wrong username or password")
+        })
+        .finally(()=> setLoading(false))
+        // signInWithEmailAndPassword(
+        //     auth,
+        //     formdata.email,
+        //     formdata.password
+        // )
+        //     .then((response) => {
+        //         if (!response.user.emailVerified) {
+        //             signOut(auth);
+        //             toast.error(
+        //                 "Please check your email for account verification."
+        //             );
+        //             dispatch({ type: "RESET" });
+        //         } else {
+        //             setItem("user", response.user);
+        //             dispatch({
+        //                 type: "SET",
+        //                 payload: response.user,
+        //             });
+        //             navigate("/");
+        //             toast.success("Login successfull..");
+        //         }
+        //     })
+        //     .catch((error) => {
+        //         const errorMessage = error.message;
+        //         toast.error(errorMessage);
+        //     })
+        //     .finally(() => {
+        //         setLoading(false);
+        //     });
     };
-    const CheckDesabled = formdata.email == "" || formdata.password == "";
+    const CheckDesabled = formdata.username == "" || formdata.password == "";
     return (
         <section className="bg-blue-50">
             <div className=" flex flex-col items-center justify-end sm:justify-center px-6 py-8 mx-auto h-svh md:h-dvh lg:py-0">
@@ -73,16 +85,16 @@ function Login() {
                         >
                             <div>
                                 <label
-                                    htmlFor="email"
+                                    htmlFor="username"
                                     className="block mb-2 text-sm font-medium text-gray-900"
                                 >
                                     Your
-                                    email
+                                    Username
                                 </label>
                                 <input
-                                    type="email"
-                                    name="email"
-                                    id="email"
+                                    type="text"
+                                    name="username"
+                                    id="username"
                                     className="bg-gray-50 ring-1 ring-gray-300 text-slate-800 sm:text-sm rounded-lg focus:ring-blue-600 block w-full p-2.5 outline-none focus:ring-2"
                                     placeholder="name@company.com"
                                     required=""
@@ -90,7 +102,7 @@ function Login() {
                                         HandleChange
                                     }
                                     value={
-                                        formdata.email
+                                        formdata.username
                                     }
                                 />
                             </div>

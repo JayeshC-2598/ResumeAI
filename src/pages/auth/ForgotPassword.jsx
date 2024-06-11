@@ -46,6 +46,8 @@ function ForgotPassword() {
                                 Remember your password ! <Link to="../login" className="font-medium text-blue-600 hover:underline">Sign in here.</Link>
                                 <br />
                                 Don't have an account yet? <Link to="../register" className="font-medium text-blue-600 hover:underline">Sign up</Link>
+                                <br />
+                                Request new OTP<Link to="../new-otp" className="font-medium text-blue-600 hover:underline">Sign up</Link>
                             </p>
                             {/* <p className="text-sm font-light text-gray-500">
                             </p> */}

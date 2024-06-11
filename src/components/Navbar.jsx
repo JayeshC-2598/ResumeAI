@@ -8,15 +8,15 @@ import MenuButton from './MenuButton';
 const Navbar = () => {
     return (
         <header className="font-inter text-slate-700">
-            <div className="container mx-auto px-5 max-w-7xl">
+            <div className="px-5">
                 <nav className="h-16 w-full flex items-center justify-between">
                     <Link
                         to="/"
                         className="font-bold tracking-wider group text-lg"
                     >
-                        Resumi
-                        <span className="text-blue-500 transition-colors group-hover:text-blue-600">
-                            FY
+                        Flowchart
+                        <span className="text-blue-500 transition-colors group-hover:text-blue-600 group-hover:outline-dashed outline-1">
+                            AI
                         </span>
                     </Link>
                     {/* <button className="outline-none rounded-full shadow-lg p-2 bg-white hover:scale-105 hover:shadow-md transition-all active:scale-95">
