@@ -13,6 +13,9 @@ import Flowchart from "./pages/Flowchart";
 import NewOTPForm from "./pages/auth/NewOTPForm";
 import Landing from "./pages/auth/Landing";
 
+
+import Playground from "./pages/Playground";
+
 function App() {
     const { user, loading } = useAuthContext();
     return (
@@ -28,6 +31,7 @@ function App() {
                             <Route path="profile" element={<ProfilePage />} />
                             <Route path="flowchart" element={<Flowchart />} />
                             <Route path="flowchart/:thread_id" element={<Flowchart />} />
+                            <Route path="playground" element={<Playground />} />
                         </Route>
                         <Route path="landing" element={user ? <Navigate to="/" /> : <Landing />} />
                         <Route path="login" element={user ? <Navigate to="/" /> : <Login />} />

@@ -1,5 +1,5 @@
 {
-  "name": "resume-ai",
+  "name": "flowchart-ai",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -15,6 +15,7 @@
     "driver.jsx": "^1.4.2",
     "file-saver": "^2.0.5",
     "firebase": "^10.8.0",
+    "html-to-image": "^1.11.11",
     "markdown-it": "^14.0.0",
     "mermaid": "^10.9.0",
     "openai": "^4.24.7",

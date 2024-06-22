@@ -1,10 +1,8 @@
 import http from "../config/axios-config";
 import React, { createContext, useEffect, useReducer, useContext, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useStorage from "../hooks/useStorage";
 import toast from "react-hot-toast";
-// import { onAuthStateChanged, signOut } from "firebase/auth";
-// import { auth } from "../config/firebase-config";
 
 
 
@@ -16,7 +14,6 @@ const authReducer = (state, action) => {
         case 'SET':
             return { user: action.payload.user_profile, token: action.payload.token }
         case 'RESET':
-            // console.log("authReducer Reset Called");
             return { user: null, token: null }
         default:
             return state;
@@ -96,7 +93,7 @@ export default function AuthContextProvider({ children }) {
             navigate("/landing");
         }
         setLoading(false);
-        console.log("AuthCOntext");
+        console.log("AuthContext");
     }, [])
 
     return (

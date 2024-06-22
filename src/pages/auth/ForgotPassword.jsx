@@ -1,9 +1,10 @@
+// TODO
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { auth } from '../../config/firebase-config';
 import { sendPasswordResetEmail } from "firebase/auth";
 
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 
 function ForgotPassword() {
     const [email, setEmail] = useState('');

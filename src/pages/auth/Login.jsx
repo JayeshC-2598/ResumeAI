@@ -129,21 +129,14 @@ function Login() {
                                 />
                             </div>
                             <div className="flex items-center justify-end">
-                                {/* <div className="flex items-start">
-                                    <div className="flex items-center h-5">
-                                        <input id="remember" aria-describedby="remember" type="checkbox" className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300" required="" />
-                                    </div>
-                                    <div className="ml-3 text-sm">
-                                        <label htmlFor="remember" className="text-gray-500">Remember me</label>
-                                    </div>
-                                </div> */}
-                                <Link
+                                {/* TODO */}
+                                {/* <Link
                                     to="/forgot-pass"
                                     className="text-sm font-medium text-blue-600 hover:underline"
                                 >
                                     Forgot
                                     password?
-                                </Link>
+                                </Link> */}
                             </div>
                             <button
                                 type="submit"

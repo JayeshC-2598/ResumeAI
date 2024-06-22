@@ -43,6 +43,7 @@ function NewOTPForm() {
                                 <label htmlFor="terms" className="ms-2 text-sm font-medium text-gray-900">I agree with the <a href="#" className="text-blue-600 hover:underline">terms and conditions</a></label>
                             </div>
                             <div className="-flex items-center justify-between hidden">
+                                {/* TODO */}
                                 <Link to="/forgot-pass" className="text-sm font-medium text-blue-600 hover:underline">Forgot password?</Link>
                             </div>
                             <button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center disabled:bg-blue-300 disabled:cursor-not-allowed" disabled={CheckDesabled}>{

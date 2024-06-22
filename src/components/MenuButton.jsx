@@ -1,8 +1,6 @@
 import React, { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { useAuthContext } from "../context/AuthContext";
-// import { signOut } from "firebase/auth";
-import { auth } from "../config/firebase-config";
 import { Link } from "react-router-dom";
 
 function MenuButton() {
